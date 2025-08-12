@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Test the Job Transition Journal</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #111827;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #22c55e;
+      --accent-2: #06b6d4;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+      background: radial-gradient(1200px 800px at 20% -10%, rgba(34,197,94,0.25), transparent 60%),
+                  radial-gradient(1000px 700px at 120% 20%, rgba(6,182,212,0.25), transparent 60%),
+                  var(--bg);
+      color: var(--text);
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      line-height: 1.5;
+    }
+    .card {
+      width: 100%;
+      max-width: 680px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.35);
+      backdrop-filter: blur(6px);
+    }
+    h1 {
+      font-size: clamp(1.4rem, 2.5vw + 1rem, 2.2rem);
+      margin: 0 0 6px 0;
+      letter-spacing: 0.2px;
+    }
+    p.lead {
+      margin: 0 0 18px 0;
+      color: var(--muted);
+      font-size: clamp(0.95rem, 0.5vw + 0.75rem, 1.05rem);
+    }
+    .cta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 14px;
+    }
+    a.button {
+      appearance: none;
+      text-decoration: none;
+      padding: 14px 18px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: white;
+      font-weight: 700;
+      display: inline-block;
+      transition: transform 0.12s ease, opacity 0.2s ease;
+      border: none;
+      cursor: pointer;
+    }
+    a.button:active { transform: translateY(1px) scale(0.98); }
+    .qr-wrap {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 18px;
+      align-items: center;
+      margin-top: 12px;
+    }
+    img.qr {
+      width: 140px;
+      height: 140px;
+      border-radius: 12px;
+      background: #fff;
+      padding: 8px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    }
+    .note { color: var(--muted); font-size: 0.95rem; }
+    .footer { margin-top: 18px; font-size: 0.85rem; color: var(--muted); }
+    .badge { display:inline-block; font-size:0.75rem; padding:6px 10px; border-radius:999px; background: rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.1); }
+  </style>
+</head>
+<body>
+  <main class="card" role="main">
+    <div class="badge">Beta test invite</div>
+    <h1>Try the Job Transition Journal</h1>
+    <p class="lead">Tap the button below to open the journal, or scan the QR code with your phone's camera.</p>
+    <div class="cta">
+      <a class="button" href="URL-instagram.com/goldrootnaturals" target="_blank" rel="noopener">Open the Journal</a>
+    </div>
+    <div class="qr-wrap">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAACkklEQVR4nO2bQYrjMBBFX40MvbQhB8hR7BvMmeZm1lHmAA3SssHmz0Kyk3TTnW4mMTZULQSR3uKDKJd/uWLiJxF//QgH55133nnnnXf+M95qNNhQ9mcz6wDycjZsqMf5B/O9JCmBxtxgZi/re1eQJOmWf7Ye5x/M55qhZh1IaTbIZgCYWbO1Huefw2tsJ2wgSCPho3nau37n7/B9mo3YzUaf9qDH+f/ilwdvKyCDAQjmhjiEcnadxXvT7/yduH55Iog+vVuWs16Sxr3pd/7rKPl7yVDF84TIs9WN9rYG702/89/hbcgN9YU5N5h1QdBOAHPdGzbU4/yj+DV/3wzaqbE+ncqJYvfaQO64VOL96Xf+TpTuxUio/Q1JoteEVBbVIuz194j8eqHXi8Z2QkoAraSxVQ2/34Pxiz/KHYoGkE9T3WuFkc390YF5tEZ5oepTkKSJ+lROIKXg+XtMfrnfBBq5lGOAdi3CKcjr74F5G7gxRGtrw4b8IuJ5uuWfrcf5R/HVH8Xzm6n/+yLiAAbhFpuXOr03/c5/j88NNrRvZkM7oZHZiB2w9jfqM3uv+p3/JC7950sRvvK/I6H4I6+/h+Sv+s/Wj1NjECaLXSp3bjCbYG60jR7nH8tzsUY1dVP9yF/aHQDXjY+96Xf+Tug2qANXEzc9rWkxTnvT7/x3+Mv8ZOlqRGvqQm4AgmzYUI/zj+Kr7+lHgHxCMGF96hD5RPHEsUtb6XH+OfwyP0k0M/3pANo3I5pZmcnaVo/zT+JL14r6zb9Yo9gFn38+Jt+8+13m6+Lv10bxvH44ykv67k6/81/H+/lJxd8JIMj6BAa27m2hx/nH8h/mJ6H638skB3j/6qi8+f+7nXfeeeedd35z/h9Fe6d1znBnSgAAAABJRU5ErkJggg==" alt="QR code to URL-instagram.com/goldrootnaturals" class="qr" />
+      <div class="note">
+        <strong>Scan to open:</strong><br/>
+        URL-instagram.com/goldrootnaturals<br/>
+        Works on iOS and Android — just open your camera and point at the code.
+      </div>
+    </div>
+    <div class="footer">
+      If the link doesn't load, confirm the URL is correct and published.
+    </div>
+  </main>
+</body>
+</html>
